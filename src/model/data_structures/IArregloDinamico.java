@@ -43,5 +43,13 @@ public interface IArregloDinamico<T>
 	 * @return dato eliminado
 	 */
 	void eliminar( T dato );
+	
+	/**
+	 * Eliminar un dato del arreglo.
+	 * Los datos restantes deben quedar "compactos" desde la posicion 0.
+	 * @param dato Objeto de eliminacion en el arreglo
+	 * @return dato eliminado
+	 */
+	
 
 }

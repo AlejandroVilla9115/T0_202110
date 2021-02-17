@@ -7,18 +7,18 @@ import model.data_structures.IArregloDinamico;
  * Definicion del modelo del mundo
  *
  */
-public class Modelo {
+public class Modelo<T> {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private IArregloDinamico datos;
+	private IArregloDinamico<T> datos;
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
 	 */
 	public Modelo()
 	{
-		datos = new ArregloDinamico(7);
+		datos = new ArregloDinamico<T>(7);
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class Modelo {
 	 */
 	public Modelo(int capacidad)
 	{
-		datos = new ArregloDinamico(capacidad);
+		datos = new ArregloDinamico<T>(capacidad);
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class Modelo {
 	 * @param dato Dato a buscar
 	 * @return dato encontrado
 	 */
-	public String buscar(String dato)
+	public T buscar(T dato)
 	{
 		return datos.buscar(dato);
 	}
@@ -63,7 +63,7 @@ public class Modelo {
 	 * @param dato Dato a eliminar
 	 * @return dato eliminado
 	 */
-	public String eliminar(String dato)
+	public void eliminar(T dato)
 	{
 		return datos.eliminar(dato);
 	}
