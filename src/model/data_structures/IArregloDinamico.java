@@ -1,6 +1,6 @@
 package model.data_structures;
 
-public interface IArregloDinamico<T> 
+public interface IArregloDinamico<T extends Comparable<T>>
 {
 
 	/**
@@ -43,5 +43,9 @@ public interface IArregloDinamico<T>
 	 * @return dato eliminado
 	 */
 	void eliminar( T dato );
-
+  
+  /**
+	 * Invierte el contenido de la lista de los elementos genericos 
+	 */
+  void invertir( );
 }

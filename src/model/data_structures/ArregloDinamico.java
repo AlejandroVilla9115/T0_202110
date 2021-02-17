@@ -1,5 +1,9 @@
 package model.data_structures;
 
+import java.util.Collection;
+
+import javax.lang.model.util.ElementScanner6;
+
 /**
  * 2019-01-23
  * Estructura de Datos Arreglo Dinamico de Strings.
@@ -7,7 +11,8 @@ package model.data_structures;
  * @author Fernando De la Rosa
  *
  */
-public class ArregloDinamico<T> implements IArregloDinamico<T> {
+public class ArregloDinamico<T extends Comparable<T>> implements ArregloDinamico<T> 
+{
 		/**
 		 * Capacidad maxima del arreglo
 		 */
@@ -72,15 +77,17 @@ public class ArregloDinamico<T> implements IArregloDinamico<T> {
 		public T buscar(T dato)
 		{
 			T solucion = null;
-			boolean encontro = false;
-			for (int i = 0; i < tamanoAct && !encontro; i++)
-			{
-				if(elementos[i].equals(dato))
-				{
-					encontro = true;
-					solucion = elementos[i];
-				}
-			}
+      int i = 0;
+      boolean encontro = false;
+      while (i < tamanoAct && !encontro)
+      {
+        if(elementos[i].compareTo(dato) == 0)
+			  {
+          encontro = true;
+          solucion = elementos[i];
+			  }
+        i++;
+      }
 			return solucion;
 		}
 
@@ -88,7 +95,7 @@ public class ArregloDinamico<T> implements IArregloDinamico<T> {
 		{
 			for(int i = 0; i < tamanoAct; i++)
 			{
-				if(elementos[i].equals(dato))
+				if(elementos[i].compareTo(dato) == 0)
 				{
 					if(i == tamanoAct)
 					{
@@ -96,13 +103,25 @@ public class ArregloDinamico<T> implements IArregloDinamico<T> {
 					}
 					else
 					{
-						for(int j = i; j < tamanoAct; j++)
+						for(int j = i + 1; j < tamanoAct; j++)
 						{
-							elementos[j] = elementos[j + 1];							
+							elementos[i] = elementos[j];							
 						}
-						tamanoAct --;
+						tamanoAct--;
 					}
 				}
 			}
 		}
+    
+    public void invertir( )
+    {
+      T temporal[] = (T[]) new Object[tamanoMax];
+      int j = 0;
+      for(int i = tamanoAct; i >= 0; i--)
+      {
+        temporal[j] = elementos[i];
+        j++;
+      }
+      elementos = temporal;
+    }
 }
